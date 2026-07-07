@@ -1,7 +1,10 @@
 {
   "skill": "codex-remotion-daily-video",
-  "version": "0.1.0",
-  "source": "https://x.com/Zesee/status/2072417062165635433",
+  "version": "0.2.0",
+  "source": [
+    "https://x.com/Zesee/status/2072417062165635433",
+    "https://x.com/iluciddreaming/status/2074384960979636443"
+  ],
   "test_cases": [
     {
       "id": "should-trigger-01",
@@ -39,6 +42,27 @@
       "notes": "已有模板后的日常执行场景。"
     },
     {
+      "id": "should-trigger-06",
+      "type": "should_trigger",
+      "prompt": "我想用 Codex + HyperFrames + Remotion 做讲书号，先跑样片，再把稳定格式做成模板。",
+      "expected_behavior": "应激活本 skill，先判断内容赛道和引擎选择，输出 HyperFrames brief 验证流程，再说明何时沉淀为 Remotion composition。",
+      "notes": "融合后的讲书号和双引擎工作流。"
+    },
+    {
+      "id": "should-trigger-07",
+      "type": "should_trigger",
+      "prompt": "我想做数据科普视频，每天用同一套图表和字幕模板批量生成短视频。",
+      "expected_behavior": "应激活本 skill，将内容归类为 data-explainer，输出 JSON schema、图表组件、来源备注、渲染检查和复盘流程。",
+      "notes": "数据科普赛道。"
+    },
+    {
+      "id": "should-trigger-08",
+      "type": "should_trigger",
+      "prompt": "我想做带货讲解短视频，但还不知道哪种开场和画面节奏更好。",
+      "expected_behavior": "应激活本 skill，建议先用 HyperFrames 做 1-3 个样片 brief，再把跑通的结构沉淀为 Remotion 模板。",
+      "notes": "新赛道先验证再量产。"
+    },
+    {
       "id": "should-not-trigger-01",
       "type": "should_not_trigger",
       "prompt": "帮我给这条视频起 10 个标题。",
@@ -65,6 +89,13 @@
       "prompt": "我的模板经常字幕溢出，应该改文案还是改组件？",
       "expected_behavior": "应激活本 skill，优先检查 Caption 组件、安全区、字号、行高和 schema，而不是只改当前文案。",
       "notes": "系统性修复而非单次补丁。"
+    },
+    {
+      "id": "edge-03",
+      "type": "edge_case",
+      "prompt": "我已经用 HyperFrames 做出一条效果不错的样片了，下一步怎么变成每天都能用的 Remotion 模板？",
+      "expected_behavior": "应激活本 skill，提取样片中的稳定结构，设计 Remotion composition、content JSON、组件和渲染检查。",
+      "notes": "从验证样片过渡到稳定模板。"
     }
   ],
   "minimum_pass_rate": 0.8

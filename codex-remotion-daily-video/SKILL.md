@@ -1,22 +1,23 @@
 ---
 name: codex-remotion-daily-video
-description: Use when the user wants to turn repeatable knowledge, tutorial, news, quote, podcast-clip, product-update, or course-clip videos into a Codex plus Remotion daily production line with reusable templates, structured JSON content, render checks, and review loops.
+description: Use when the user wants repeatable knowledge, tutorial, book-summary, product-explainer, data-explainer, quote, podcast-clip, product-update, or course-clip videos as a Codex, HyperFrames, and Remotion production line.
 ---
 
-# Codex + Remotion Daily Video
+# Codex + HyperFrames + Remotion Daily Video
 
 ## Overview
 
-Use this skill to turn repeatable short-video production into a maintainable code project. The core idea: the human owns judgment and message; Codex maintains the production line; Remotion renders stable videos from React components and structured data.
+Use this skill to turn repeatable short-video production into a maintainable code project. The core idea: the human owns judgment and message; Codex maintains the production line; HyperFrames helps validate new video formats quickly; Remotion renders stable videos from React components and structured data.
 
 ## When to Use
 
 Use for:
 
 - Daily or weekly knowledge videos with repeated structure.
-- AI tool tutorials, data explainers, news explainers, quote cards, podcast clips, product updates, course clips.
+- AI tool tutorials, book-summary accounts, product explainers, data explainers, news explainers, quote cards, podcast clips, product updates, course clips.
+- Users who want to test a new content format with HyperFrames before turning it into a Remotion template.
 - Users who keep repeating video setup tasks: script, scenes, captions, cover, timing, dimensions, checks, exports.
-- Requests like "make my video workflow repeatable", "use Codex and Remotion for daily videos", "turn articles into consistent short videos", "create a video production Skill".
+- Requests like "make my video workflow repeatable", "use Codex and Remotion for daily videos", "use Codex + HyperFrames + Remotion", "turn articles into consistent short videos", "create a video production Skill".
 
 Do not use for:
 
@@ -26,7 +27,13 @@ Do not use for:
 
 ## Core Principle
 
-Do not start from an empty video project every day. Maintain one template and feed it new data.
+Do not start from an empty video project every day. First validate uncertain formats quickly, then maintain stable templates and feed them new data.
+
+Use the two-engine rule:
+
+- HyperFrames is for quick format validation: hook, pacing, layout direction, scene rhythm, and sample outputs.
+- Remotion is for stable production: reusable React components, JSON content, caption rules, render commands, and batch output.
+- Codex is the operator: it turns ideas into scripts, briefs, schemas, components, checks, and review improvements.
 
 The stable parts live in code:
 
@@ -49,7 +56,7 @@ The daily-changing parts live in JSON:
 
 ## Fit Check
 
-Before proposing Remotion, decide whether the content is template-friendly.
+Before proposing a full Remotion setup, decide whether the content is template-friendly and whether it needs a HyperFrames validation pass first.
 
 Good fit:
 
@@ -57,6 +64,18 @@ Good fit:
 - The user wants consistency across many videos.
 - Text, captions, screenshots, cards, UI, charts, or simple motion carry the video.
 - The user can benefit from batch rendering or multiple platform formats.
+
+Use HyperFrames first when:
+
+- The user is exploring a new account direction, visual style, or content series.
+- The content is template-friendly, but the winning hook, pacing, and layout are not known yet.
+- The user wants a quick sample for book-summary, product-explainer, or data-explainer videos.
+
+Use Remotion directly when:
+
+- The series format is already proven.
+- The user needs repeatable output, JSON-driven videos, or multiple videos per day.
+- The user wants stable captions, covers, components, and render checks.
 
 Weak fit:
 
@@ -69,14 +88,15 @@ Weak fit:
 When using this skill, output these sections:
 
 1. **Fit verdict**: whether Codex + Remotion is worth it.
-2. **Video rule file**: proposed `AGENTS.md` rules.
-3. **Minimum project structure**.
-4. **Content JSON schema**.
-5. **Reusable modules**.
-6. **Daily workflow**.
-7. **Render and layout checks**.
-8. **Review loop**.
-9. **First three templates to build**.
+2. **Engine choice**: HyperFrames validation, Remotion production, or both.
+3. **Video rule file**: proposed `AGENTS.md` rules.
+4. **Minimum project structure**.
+5. **Content JSON schema**.
+6. **Reusable modules**.
+7. **Daily workflow**.
+8. **Render and layout checks**.
+9. **Review loop**.
+10. **First templates to build**.
 
 ## Workflow
 
@@ -96,9 +116,10 @@ Create or update `AGENTS.md` in the video project. Include:
 - Animation is clean and readable; avoid noisy transitions.
 - After template changes, render a still frame before full video render.
 - Final MP4 exports go to outputs/.
+- New formats get a HyperFrames brief before becoming Remotion templates.
 ```
 
-Add account-specific style rules: brand colors, fonts, caption style, cover style, CTA style, and banned visual patterns.
+Add account-specific style rules: brand colors, fonts, caption style, cover style, ending style, content lane, and visual patterns to avoid.
 
 ### 2. Build the Minimum Production Line
 
@@ -129,12 +150,27 @@ daily-video/
   scripts/
     render-daily.mjs
     make-content-from-md.mjs
+    make-hyperframes-brief.mjs
   outputs/
 ```
 
 Keep daily variation in `content/*.json`; avoid changing the composition for every video.
 
-### 3. Use Structured Content
+### 3. Decide the Content Lane
+
+Classify the video before designing templates:
+
+| Lane | Structure | Build first |
+|---|---|---|
+| Book summary | quote, problem, method, example, action | hook, book card, takeaway card |
+| Product explainer | scenario, pain, feature, proof, result | scene card, comparison, ending |
+| Data explainer | phenomenon, number, context, misconception, conclusion | chart card, source note, simple explanation |
+| Tool tutorial | problem, tool, steps, demo, result | step card, demo frame, result card |
+| Opinion explainer | tension, insight, method, example, ending | hook card, contrast card, takeaway |
+
+For a new lane, create 1-3 HyperFrames briefs before creating a Remotion composition.
+
+### 4. Use Structured Content
 
 Start with a small schema:
 
@@ -160,7 +196,19 @@ Start with a small schema:
 }
 ```
 
-### 4. Split the Video into Five Modules
+For book-summary, product-explainer, and data-explainer videos, extend only the fields that change the lane:
+
+```json
+{
+  "lane": "book-summary",
+  "sourceTitle": "The Almanack of Naval Ravikant",
+  "claim": "真正的杠杆不是更努力，而是让系统替你重复。",
+  "evidence": ["作者观点", "现实案例", "可执行动作"],
+  "cta": "收藏这条，下一次做内容前先看一遍。"
+}
+```
+
+### 5. Split the Video into Five Modules
 
 Build these first:
 
@@ -172,18 +220,30 @@ Build these first:
 | Asset | Screenshots, logo, avatar, B-roll | local assets, stable references |
 | Ending | Summary and light CTA | reusable closing card |
 
-### 5. Daily Loop
+### 6. HyperFrames Validation Loop
+
+Use this when the format is not stable yet:
+
+1. Turn the raw idea into a HyperFrames brief: hook, scene list, visual direction, captions, duration, and ending.
+2. Produce 1-3 sample variants with different hooks or scene rhythms.
+3. Choose one format based on clarity, pacing, repeatability, and platform fit.
+4. Convert the winning format into a Remotion composition only after the structure is reusable.
+
+HyperFrames output should be treated as a prototype, not the long-term source of truth.
+
+### 7. Daily Loop
 
 Use this repeatable loop:
 
 1. User writes raw idea: topic, audience, core point, style.
-2. Codex turns it into a 45-75 second script and `content/YYYY-MM-DD-topic.json`.
-3. Codex checks whether the composition supports all fields.
-4. Render one key still frame and inspect layout.
-5. Render the full MP4.
-6. Review performance and improve one template rule.
+2. If the lane is unproven, Codex creates a HyperFrames brief and sample variants.
+3. If the lane is proven, Codex turns it into a 45-75 second script and `content/YYYY-MM-DD-topic.json`.
+4. Codex checks whether the Remotion composition supports all fields.
+5. Render one key still frame and inspect layout.
+6. Render the full MP4.
+7. Review performance and improve one template rule.
 
-### 6. Render Checks
+### 8. Render Checks
 
 Before full render, check:
 
@@ -198,15 +258,27 @@ Before full render, check:
 
 If something fails, adjust components or schema rules before rendering the full video. Prefer fixing the system over patching one video.
 
-### 7. First Three Templates
+### 9. First Templates
 
 Start with:
 
 1. **Opinion explainer**: hook, problem, insight, method, example, ending.
 2. **Tool tutorial**: problem, tool, steps, demo, result, ending.
 3. **Quote card**: quote, context, interpretation, action, ending.
+4. **Book summary**: book/title card, quote, practical problem, method, example, action.
+5. **Product explainer**: pain, scene, feature, proof, result, light ending.
+6. **Data explainer**: phenomenon, key number, chart, misconception, explanation, conclusion.
 
 ## Prompt Patterns
+
+Create HyperFrames briefs:
+
+```text
+I want to test a new short-video lane before building a Remotion template.
+Create 3 HyperFrames briefs.
+Each brief needs: hook, scene list, visual direction, captions, duration, and why it is repeatable.
+Then recommend which one should become a Remotion composition.
+```
 
 Turn raw idea into JSON:
 
@@ -218,6 +290,15 @@ Requirements:
 3. Each scene needs title, voiceover, caption, and visual.
 4. Output as content/YYYY-MM-DD-topic.json.
 5. Do not change Remotion components unless the schema is insufficient.
+```
+
+Turn a book-summary idea into JSON:
+
+```text
+Turn this book-summary idea into a 60-second vertical video.
+Use lane=book-summary.
+Include sourceTitle, claim, evidence, scenes, captions, visual direction, and ending.
+If the format is not stable, produce a HyperFrames brief first.
 ```
 
 Check template support:
@@ -239,6 +320,8 @@ Update the relevant rule or component.
 ## Common Mistakes
 
 - Rebuilding the timeline every day instead of feeding new JSON.
+- Turning every new idea into a Remotion template before the format has been validated.
+- Treating HyperFrames prototypes as the long-term production system instead of promoting winning formats into stable templates.
 - Letting captions live inside each scene instead of one caption component.
 - Changing components for one video instead of improving schema and reusable modules.
 - Skipping still-frame layout checks before full render.
@@ -250,6 +333,7 @@ Update the relevant rule or component.
 A video production line is ready when:
 
 - A new idea can become structured JSON.
+- Unproven lanes can be tested with a HyperFrames brief before template work.
 - One Remotion composition can render multiple videos.
 - Captions and titles stay inside safe zones.
 - A still frame can catch layout issues before full render.
