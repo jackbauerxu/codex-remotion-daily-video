@@ -31,6 +31,11 @@
 - Remotion：适合沉淀稳定模板，用 JSON 批量驱动长期栏目。
 - Codex：负责把创意、脚本、数据、组件、检查规则和复盘结论写进项目。
 
+它也可以作为 `codex-workflow-builder` 的子 Skill 使用：
+
+- `codex-workflow-builder` 先判断这个视频流程是否值得长期复用，并输出 Workflow Contract。
+- `codex-remotion-daily-video` 接收这个合同，再处理视频赛道、样片、JSON、Remotion 模板和渲染检查。
+
 ## 适合谁用
 
 适合这些创作者和团队：
@@ -69,6 +74,34 @@
 ## 它能实现什么功能
 
 使用这个 skill 后，Codex 会帮助你搭建一套 Codex + Remotion 视频生产方法，重点输出以下内容：
+
+### 0. 接收父 Skill 的 Workflow Contract
+
+如果你的需求还很模糊，例如“我想把讲书号日更做成一个长期流程”，建议先用 `codex-workflow-builder` 定义：
+
+- 目标
+- 触发条件
+- 输入
+- 输出
+- 项目目录
+- 人工检查点
+- 质量标准
+- 停止条件
+
+然后本 skill 只负责视频专项部分：
+
+```markdown
+## Workflow Contract
+- Goal: 每天把一篇书摘做成 60 秒竖屏讲书视频
+- Trigger: 用户把书摘放进 inputs/book-notes/
+- Inputs: 书名、金句、核心观点、现实案例、行动建议
+- Outputs: content JSON、HyperFrames 样片 brief、Remotion MP4
+- Project folder: daily-book-video/
+- Human review points: 样片方向、标题、still frame、最终视频
+- Quality checks: 字幕安全区、标题长度、时长、封面可读性
+- Stop conditions: 缺少书籍信息、缺少授权素材、用户未确认关键数字
+- Child skill: codex-remotion-daily-video
+```
 
 ### 1. 判断是否适合 Remotion 生产线
 
@@ -265,6 +298,12 @@ cp -R codex-remotion-daily-video ~/.codex/skills/
 我想用 Codex + Remotion 做知识类短视频日更，把每天的视频变成模板加 JSON 的流程。
 ```
 
+### 从父工作流接入
+
+```text
+这是 codex-workflow-builder 生成的 Workflow Contract。请用 codex-remotion-daily-video 继续设计视频赛道、HyperFrames 样片、content JSON 和 Remotion 模板。
+```
+
 ### 先用 HyperFrames 验证样片
 
 ```text
@@ -299,12 +338,13 @@ cp -R codex-remotion-daily-video ~/.codex/skills/
 
 这个 skill 最好的使用方式不是让 Codex 一次性生成一个巨大的项目，而是按顺序推进：
 
-1. 先确认你的内容是否值得模板化。
-2. 如果赛道还没稳定，先用 HyperFrames 思路做样片 brief。
-3. 再写 `AGENTS.md`，固定账号规则。
-4. 然后做一个最小 Remotion 模板。
-5. 接着用 JSON 驱动每天的视频。
-6. 每天发布后只优化生产线里的一个模块。
+1. 需求模糊时，先用 `codex-workflow-builder` 生成 Workflow Contract。
+2. 再确认你的内容是否值得模板化。
+3. 如果赛道还没稳定，先用 HyperFrames 思路做样片 brief。
+4. 再写 `AGENTS.md`，固定账号规则。
+5. 然后做一个最小 Remotion 模板。
+6. 接着用 JSON 驱动每天的视频。
+7. 每天发布后只优化生产线里的一个模块。
 
 这样项目会越来越稳定，而不是越做越乱。
 

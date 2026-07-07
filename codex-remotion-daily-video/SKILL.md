@@ -17,6 +17,7 @@ Use for:
 - AI tool tutorials, book-summary accounts, product explainers, data explainers, news explainers, quote cards, podcast clips, product updates, course clips.
 - Users who want to test a new content format with HyperFrames before turning it into a Remotion template.
 - Users who keep repeating video setup tasks: script, scenes, captions, cover, timing, dimensions, checks, exports.
+- Requests routed from `codex-workflow-builder` after a Workflow Contract has identified repeatable short-video production.
 - Requests like "make my video workflow repeatable", "use Codex and Remotion for daily videos", "use Codex + HyperFrames + Remotion", "turn articles into consistent short videos", "create a video production Skill".
 
 Do not use for:
@@ -87,20 +88,53 @@ Weak fit:
 
 When using this skill, output these sections:
 
-1. **Fit verdict**: whether Codex + Remotion is worth it.
-2. **Engine choice**: HyperFrames validation, Remotion production, or both.
-3. **Video rule file**: proposed `AGENTS.md` rules.
-4. **Minimum project structure**.
-5. **Content JSON schema**.
-6. **Reusable modules**.
-7. **Daily workflow**.
-8. **Render and layout checks**.
-9. **Review loop**.
-10. **First templates to build**.
+1. **Workflow contract intake**: use existing contract or create the missing video-specific fields.
+2. **Fit verdict**: whether Codex + Remotion is worth it.
+3. **Engine choice**: HyperFrames validation, Remotion production, or both.
+4. **Video rule file**: proposed `AGENTS.md` rules.
+5. **Minimum project structure**.
+6. **Content JSON schema**.
+7. **Reusable modules**.
+8. **Daily workflow**.
+9. **Render and layout checks**.
+10. **Review loop**.
+11. **First templates to build**.
 
 ## Workflow
 
-### 1. Define the Video Rules
+### 1. Intake the Parent Workflow Contract
+
+If the request came from `codex-workflow-builder`, read the Workflow Contract first and preserve its boundaries:
+
+```markdown
+## Workflow Contract
+- Goal:
+- Trigger:
+- Inputs:
+- Outputs:
+- Project folder:
+- Steps:
+- Human review points:
+- Quality checks:
+- Stop conditions:
+- Child skill: codex-remotion-daily-video
+```
+
+Map it into video-specific decisions:
+
+| Contract field | Video decision |
+|---|---|
+| Goal | account lane, platform, cadence, expected output |
+| Trigger | new article, book note, product update, data point, tutorial outline |
+| Inputs | source text, assets, brand rules, voiceover, dimensions |
+| Outputs | HyperFrames brief, content JSON, still frame, MP4, review notes |
+| Human review points | hook, sample variant, still frame, final render, template improvement |
+| Quality checks | title length, subtitle safe area, asset paths, duration, render output |
+| Stop conditions | missing source, unclear rights, missing required data, unapproved claims |
+
+If no Workflow Contract exists and the user is asking for a broad reusable process, create a compact contract or suggest using `codex-workflow-builder` first. Do not jump directly into Remotion components until the trigger, inputs, outputs, and review points are clear.
+
+### 2. Define the Video Rules
 
 Create or update `AGENTS.md` in the video project. Include:
 
@@ -121,7 +155,7 @@ Create or update `AGENTS.md` in the video project. Include:
 
 Add account-specific style rules: brand colors, fonts, caption style, cover style, ending style, content lane, and visual patterns to avoid.
 
-### 2. Build the Minimum Production Line
+### 3. Build the Minimum Production Line
 
 Start small:
 
@@ -156,7 +190,7 @@ daily-video/
 
 Keep daily variation in `content/*.json`; avoid changing the composition for every video.
 
-### 3. Decide the Content Lane
+### 4. Decide the Content Lane
 
 Classify the video before designing templates:
 
@@ -170,7 +204,7 @@ Classify the video before designing templates:
 
 For a new lane, create 1-3 HyperFrames briefs before creating a Remotion composition.
 
-### 4. Use Structured Content
+### 5. Use Structured Content
 
 Start with a small schema:
 
@@ -208,7 +242,7 @@ For book-summary, product-explainer, and data-explainer videos, extend only the 
 }
 ```
 
-### 5. Split the Video into Five Modules
+### 6. Split the Video into Five Modules
 
 Build these first:
 
@@ -220,7 +254,7 @@ Build these first:
 | Asset | Screenshots, logo, avatar, B-roll | local assets, stable references |
 | Ending | Summary and light CTA | reusable closing card |
 
-### 6. HyperFrames Validation Loop
+### 7. HyperFrames Validation Loop
 
 Use this when the format is not stable yet:
 
@@ -231,7 +265,7 @@ Use this when the format is not stable yet:
 
 HyperFrames output should be treated as a prototype, not the long-term source of truth.
 
-### 7. Daily Loop
+### 8. Daily Loop
 
 Use this repeatable loop:
 
@@ -243,7 +277,7 @@ Use this repeatable loop:
 6. Render the full MP4.
 7. Review performance and improve one template rule.
 
-### 8. Render Checks
+### 9. Render Checks
 
 Before full render, check:
 
@@ -258,7 +292,7 @@ Before full render, check:
 
 If something fails, adjust components or schema rules before rendering the full video. Prefer fixing the system over patching one video.
 
-### 9. First Templates
+### 10. First Templates
 
 Start with:
 
@@ -270,6 +304,18 @@ Start with:
 6. **Data explainer**: phenomenon, key number, chart, misconception, explanation, conclusion.
 
 ## Prompt Patterns
+
+Use a parent Workflow Contract:
+
+```text
+Use this Workflow Contract as the parent boundary.
+Now design the codex-remotion-daily-video child workflow:
+1. Choose engine: HyperFrames validation, Remotion production, or both.
+2. Choose content lane.
+3. Define content JSON.
+4. Define reusable modules.
+5. Define still-frame and render checks.
+```
 
 Create HyperFrames briefs:
 

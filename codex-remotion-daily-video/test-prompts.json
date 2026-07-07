@@ -63,6 +63,13 @@
       "notes": "新赛道先验证再量产。"
     },
     {
+      "id": "should-trigger-09",
+      "type": "should_trigger",
+      "prompt": "这是 codex-workflow-builder 生成的 Workflow Contract：Goal 是每天把一篇书摘做成60秒竖屏讲书视频，Child skill 是 codex-remotion-daily-video。请继续设计视频赛道、样片、content JSON 和 Remotion 模板。",
+      "expected_behavior": "应激活本 skill，先做Workflow contract intake，再输出engine choice、content lane、JSON schema、模块、检查和日更流程。",
+      "notes": "父子协作：从父skill合同进入子skill。"
+    },
+    {
       "id": "should-not-trigger-01",
       "type": "should_not_trigger",
       "prompt": "帮我给这条视频起 10 个标题。",
@@ -96,6 +103,13 @@
       "prompt": "我已经用 HyperFrames 做出一条效果不错的样片了，下一步怎么变成每天都能用的 Remotion 模板？",
       "expected_behavior": "应激活本 skill，提取样片中的稳定结构，设计 Remotion composition、content JSON、组件和渲染检查。",
       "notes": "从验证样片过渡到稳定模板。"
+    },
+    {
+      "id": "edge-04",
+      "type": "edge_case",
+      "prompt": "我想把视频生产流程做成自动化，但还没想清楚输入、输出和检查点。",
+      "expected_behavior": "应说明需要先补Workflow Contract，或建议先用codex-workflow-builder定义父流程，再回来处理视频专项。",
+      "notes": "需求仍是父流程层级，不应直接进入Remotion组件。"
     }
   ],
   "minimum_pass_rate": 0.8
