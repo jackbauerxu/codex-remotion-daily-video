@@ -31,9 +31,9 @@
 - Remotion：适合沉淀稳定模板，用 JSON 批量驱动长期栏目。
 - Codex：负责把创意、脚本、数据、组件、检查规则和复盘结论写进项目。
 
-它也可以作为 `codex-workflow-builder` 的子 Skill 使用：
+它也可以作为 [codex-workflow-builder](https://github.com/jackbauerxu/codex-workflow-builder) 的子 Skill 使用：
 
-- `codex-workflow-builder` 先判断这个视频流程是否值得长期复用，并输出 Workflow Contract。
+- [codex-workflow-builder](https://github.com/jackbauerxu/codex-workflow-builder) 先判断这个视频流程是否值得长期复用，并输出 Workflow Contract。
 - `codex-remotion-daily-video` 接收这个合同，再处理视频赛道、样片、JSON、Remotion 模板和渲染检查。
 
 ## 适合谁用
@@ -77,7 +77,7 @@
 
 ### 0. 接收父 Skill 的 Workflow Contract
 
-如果你的需求还很模糊，例如“我想把讲书号日更做成一个长期流程”，建议先用 `codex-workflow-builder` 定义：
+如果你的需求还很模糊，例如“我想把讲书号日更做成一个长期流程”，建议先用 [codex-workflow-builder](https://github.com/jackbauerxu/codex-workflow-builder) 定义：
 
 - 目标
 - 触发条件
@@ -338,7 +338,7 @@ cp -R codex-remotion-daily-video ~/.codex/skills/
 
 这个 skill 最好的使用方式不是让 Codex 一次性生成一个巨大的项目，而是按顺序推进：
 
-1. 需求模糊时，先用 `codex-workflow-builder` 生成 Workflow Contract。
+1. 需求模糊时，先用 [codex-workflow-builder](https://github.com/jackbauerxu/codex-workflow-builder) 生成 Workflow Contract。
 2. 再确认你的内容是否值得模板化。
 3. 如果赛道还没稳定，先用 HyperFrames 思路做样片 brief。
 4. 再写 `AGENTS.md`，固定账号规则。
