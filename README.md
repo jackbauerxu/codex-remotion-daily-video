@@ -36,6 +36,19 @@
 - [codex-workflow-builder](https://github.com/jackbauerxu/codex-workflow-builder) 先判断这个视频流程是否值得长期复用，并输出 Workflow Contract。
 - `codex-remotion-daily-video` 接收这个合同，再处理视频赛道、样片、JSON、Remotion 模板和渲染检查。
 
+## 调用时自动准备生产环境
+
+只要任务要求生成 still frame、预览或 MP4，Skill 会先执行环境启动检查：
+
+- 根据锁文件选择 npm、pnpm 或 yarn，并检查项目依赖。
+- 缺少或过期的 Node.js 依赖时，自动在项目内安装或更新到最新稳定兼容版本；缺少或过期的浏览器、compositor 或 FFmpeg 时，按项目支持的诊断 / 安装流程准备。
+- 使用 HyperFrames 样片时，额外检查 HyperFrames 运行时、浏览器、FFmpeg 和素材路径。
+- 安装后必须重新执行诊断和版本检查，成功后才进入渲染。
+- 网络下载和系统级安装仍需要 Codex 权限确认；不使用 `sudo`，也不把未验证的安装说成成功。
+- 后续日更复用已经通过检查的环境，不重复下载。
+
+如果自动准备失败，流程会在渲染前停止，报告缺失的软件、失败命令和需要用户批准的动作。JSON、分镜或 React 组件本身不等于 MP4 视频。
+
 ## 适合谁用
 
 适合这些创作者和团队：

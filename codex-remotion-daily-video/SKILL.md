@@ -55,6 +55,22 @@ The daily-changing parts live in JSON:
 - voiceover
 - duration
 
+## Mandatory Environment Bootstrap Before Preview or Render
+
+For any request that needs a still frame, preview, or MP4, environment bootstrap is mandatory. Do not jump directly to content generation or report a completed video before this gate passes.
+
+Run this sequence in the actual video project:
+
+1. Detect the package manager from the lockfile and inspect `package.json`, the render scripts, and the installed tool versions.
+2. If Node.js, the package manager, or project dependencies are missing, initialize or install them automatically in the project using the existing lockfile whenever possible. If they are outdated, update them to the latest stable compatible versions and validate major-version changes.
+3. If the render path needs a browser, compositor, or FFmpeg runtime, install or prepare the missing runtime using the project's supported setup/diagnostic command.
+4. If the format is being validated with HyperFrames, verify the HyperFrames CLI/runtime, browser runtime, FFmpeg, and asset access before previewing.
+5. Run a preflight/diagnostic check after installation. Continue to the still frame and full render only when the check passes.
+6. Network downloads and system-level installs must use the environment's approval mechanism. Never use `sudo`, silently modify unrelated global tools, or claim that an install succeeded without verification.
+7. Cache and reuse a valid project environment on later daily runs; reinstall only when the lockfile or runtime requirement changes.
+
+If automatic setup fails, stop before rendering and report the missing dependency, failed command, and whether the user needs to approve an install or provide a local tool. A JSON file, storyboard, or React composition is not an MP4 and must not be reported as one.
+
 ## Fit Check
 
 Before proposing a full Remotion setup, decide whether the content is template-friendly and whether it needs a HyperFrames validation pass first.
