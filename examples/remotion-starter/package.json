@@ -1,0 +1,27 @@
+{
+  "name": "codex-remotion-daily-video-starter",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "validate": "node scripts/validate-content.mjs content/example.json",
+    "brief": "node scripts/make-hyperframes-brief.mjs",
+    "still": "node scripts/render-daily.mjs --still 90",
+    "render": "node scripts/render-daily.mjs",
+    "verify": "node scripts/verify-artifact.mjs",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@remotion/bundler": "^4.0.0",
+    "@remotion/cli": "^4.0.0",
+    "@remotion/renderer": "^4.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "remotion": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "typescript": "^5.5.0"
+  }
+}
