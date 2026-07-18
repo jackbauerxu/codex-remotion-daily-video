@@ -1,0 +1,9 @@
+node_modules/
+.DS_Store
+dist/
+build/
+coverage/
+examples/remotion-starter/outputs/*.mp4
+examples/remotion-starter/outputs/*.png
+examples/remotion-starter/outputs/*.jpg
+!examples/remotion-starter/outputs/.gitkeep
