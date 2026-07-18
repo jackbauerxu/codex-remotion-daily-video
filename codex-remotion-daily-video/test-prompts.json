@@ -1,116 +1,97 @@
 {
   "skill": "codex-remotion-daily-video",
-  "version": "0.2.0",
-  "source": [
-    "https://x.com/Zesee/status/2072417062165635433",
-    "https://x.com/iluciddreaming/status/2074384960979636443"
-  ],
+  "version": "0.3.0",
+  "minimum_pass_rate": 0.85,
   "test_cases": [
     {
       "id": "should-trigger-01",
       "type": "should_trigger",
       "prompt": "我想用 Codex + Remotion 做知识类短视频日更，把每天的视频变成模板加 JSON 的流程。",
-      "expected_behavior": "应激活本 skill，判断是否适合 Remotion，并输出 AGENTS.md、项目结构、JSON schema、模块和每日流程。",
-      "notes": "典型 Codex + Remotion 日更生产线场景。"
+      "expected_behavior": "Use this skill, choose lane and engine, define content JSON, reusable modules, still-frame checks, and render workflow."
     },
     {
       "id": "should-trigger-02",
       "type": "should_trigger",
-      "prompt": "我每天都要做 AI 工具教程视频，想把字幕、封面、场景、导出都固定下来。",
-      "expected_behavior": "应激活本 skill，把重复视频制作拆成模板、组件、内容数据、渲染检查和复盘闭环。",
-      "notes": "教程视频高复用场景。"
+      "prompt": "这是 codex-workflow-builder 生成的 Workflow Contract，Child skill 是 codex-remotion-daily-video。请继续设计视频 lane、content JSON、Remotion 模板和 MP4 QA。",
+      "expected_behavior": "Intake the parent contract first, preserve boundaries, then produce child video production decisions."
     },
     {
       "id": "should-trigger-03",
       "type": "should_trigger",
-      "prompt": "Turn my repeatable short video workflow into a Codex and Remotion production line.",
-      "expected_behavior": "应激活本 skill，use the Codex plus Remotion daily video workflow in English.",
-      "notes": "英文触发。"
+      "prompt": "我已经有 Remotion 模板了，想让 Codex 每天把文章转成 content JSON，再渲染一条竖屏视频。",
+      "expected_behavior": "Design the daily raw idea -> script -> JSON -> still check -> MP4 -> review loop."
     },
     {
       "id": "should-trigger-04",
       "type": "should_trigger",
-      "prompt": "帮我设计一个 AGENTS.md，让 Codex 以后知道我的视频账号规则和渲染检查标准。",
-      "expected_behavior": "应激活本 skill，输出视频账号规则、规格、安全区、标题长度、动画、still 检查和输出目录。",
-      "notes": "项目规则文件场景。"
+      "prompt": "帮我把一个 HyperFrames 样片升级成长期可用的 Remotion composition。",
+      "expected_behavior": "Extract stable structure from the sample and promote reusable schema, components, style tokens, and QA checks."
     },
     {
       "id": "should-trigger-05",
       "type": "should_trigger",
-      "prompt": "我已经有 Remotion 模板了，想让 Codex 每天把文章转成 content JSON，再渲染一条竖屏视频。",
-      "expected_behavior": "应激活本 skill，设计每日 raw idea -> script -> JSON -> still check -> MP4 -> review 的流程。",
-      "notes": "已有模板后的日常执行场景。"
+      "prompt": "我的视频模板经常字幕溢出，应该改文案还是改组件？",
+      "expected_behavior": "Use the QA rules and prefer durable Caption component or schema fixes over one-off text edits."
     },
     {
       "id": "should-trigger-06",
       "type": "should_trigger",
-      "prompt": "我想用 Codex + HyperFrames + Remotion 做讲书号，先跑样片，再把稳定格式做成模板。",
-      "expected_behavior": "应激活本 skill，先判断内容赛道和引擎选择，输出 HyperFrames brief 验证流程，再说明何时沉淀为 Remotion composition。",
-      "notes": "融合后的讲书号和双引擎工作流。"
+      "prompt": "我想给讲书号做一个 Remotion starter，里面要有 AGENTS.md、内容 JSON、标题、字幕、场景和导出脚本。",
+      "expected_behavior": "Use the starter project shape and create or adapt a real Remotion production skeleton."
     },
     {
       "id": "should-trigger-07",
       "type": "should_trigger",
-      "prompt": "我想做数据科普视频，每天用同一套图表和字幕模板批量生成短视频。",
-      "expected_behavior": "应激活本 skill，将内容归类为 data-explainer，输出 JSON schema、图表组件、来源备注、渲染检查和复盘流程。",
-      "notes": "数据科普赛道。"
+      "prompt": "Turn my repeatable Shorts workflow into a Codex, HyperFrames, and Remotion production line with reusable scripts and style presets.",
+      "expected_behavior": "Use this skill in English and return production-line structure, prompt library, style presets, schema, and render checks."
     },
     {
       "id": "should-trigger-08",
       "type": "should_trigger",
-      "prompt": "我想做带货讲解短视频，但还不知道哪种开场和画面节奏更好。",
-      "expected_behavior": "应激活本 skill，建议先用 HyperFrames 做 1-3 个样片 brief，再把跑通的结构沉淀为 Remotion 模板。",
-      "notes": "新赛道先验证再量产。"
+      "prompt": "我需要为产品讲解视频生成真实感 B-roll 提示词，然后把这些素材引用进 Remotion JSON。",
+      "expected_behavior": "Use this skill because the B-roll prompt supports a Remotion production line; apply material-source identity without replacing Remotion QA."
     },
     {
       "id": "should-trigger-09",
       "type": "should_trigger",
-      "prompt": "这是 codex-workflow-builder 生成的 Workflow Contract：Goal 是每天把一篇书摘做成60秒竖屏讲书视频，Child skill 是 codex-remotion-daily-video。请继续设计视频赛道、样片、content JSON 和 Remotion 模板。",
-      "expected_behavior": "应激活本 skill，先做Workflow contract intake，再输出engine choice、content lane、JSON schema、模块、检查和日更流程。",
-      "notes": "父子协作：从父skill合同进入子skill。"
+      "prompt": "我做数据科普视频，每天用同一套图表、来源备注和字幕模板批量生成。",
+      "expected_behavior": "Classify as data-explainer and define chart/source fields, reusable modules, render checks, and review loop."
     },
     {
       "id": "should-not-trigger-01",
       "type": "should_not_trigger",
       "prompt": "帮我给这条视频起 10 个标题。",
-      "expected_behavior": "不应激活本 skill；这只是标题任务，不需要 Codex + Remotion 生产线。",
-      "notes": "单次文案任务。"
+      "expected_behavior": "Do not use this skill; this is a one-off title task, not a production line."
     },
     {
       "id": "should-not-trigger-02",
       "type": "should_not_trigger",
       "prompt": "帮我剪一条婚礼现场情绪混剪，音乐和节奏要很有感觉。",
-      "expected_behavior": "不应默认激活本 skill；强 footage 和情绪剪辑更适合手工剪辑流程。",
-      "notes": "非模板化视频。"
+      "expected_behavior": "Do not default to this skill; footage-first emotional montage is not a JSON-driven Remotion daily workflow."
+    },
+    {
+      "id": "should-not-trigger-03",
+      "type": "should_not_trigger",
+      "prompt": "帮我写一个 Seedance 提示词：韩国小区里一个女孩散步，要真实感。",
+      "expected_behavior": "Use a dedicated realistic video prompting skill instead; this skill only uses that pattern when B-roll supports a Remotion pipeline."
     },
     {
       "id": "edge-01",
       "type": "edge_case",
       "prompt": "我只想发一条视频，不确定以后会不会继续做，也要上 Remotion 吗？",
-      "expected_behavior": "应先做 Fit verdict，说明一次性视频通常不值得搭完整生产线。",
-      "notes": "适配性边界。"
+      "expected_behavior": "Give a fit verdict and explain that one-off videos usually do not justify a full production line."
     },
     {
       "id": "edge-02",
       "type": "edge_case",
-      "prompt": "我的模板经常字幕溢出，应该改文案还是改组件？",
-      "expected_behavior": "应激活本 skill，优先检查 Caption 组件、安全区、字号、行高和 schema，而不是只改当前文案。",
-      "notes": "系统性修复而非单次补丁。"
+      "prompt": "我想把视频生产流程做成自动化，但还没想清楚输入、输出和检查点。",
+      "expected_behavior": "Route back to parent workflow design or create the missing Workflow Contract fields before Remotion components."
     },
     {
       "id": "edge-03",
       "type": "edge_case",
-      "prompt": "我已经用 HyperFrames 做出一条效果不错的样片了，下一步怎么变成每天都能用的 Remotion 模板？",
-      "expected_behavior": "应激活本 skill，提取样片中的稳定结构，设计 Remotion composition、content JSON、组件和渲染检查。",
-      "notes": "从验证样片过渡到稳定模板。"
-    },
-    {
-      "id": "edge-04",
-      "type": "edge_case",
-      "prompt": "我想把视频生产流程做成自动化，但还没想清楚输入、输出和检查点。",
-      "expected_behavior": "应说明需要先补Workflow Contract，或建议先用codex-workflow-builder定义父流程，再回来处理视频专项。",
-      "notes": "需求仍是父流程层级，不应直接进入Remotion组件。"
+      "prompt": "我已经渲染出了 JSON 和 React 文件，可以说视频完成了吗？",
+      "expected_behavior": "No. Explain that JSON and components are not a rendered video; still/MP4 artifact verification must pass."
     }
-  ],
-  "minimum_pass_rate": 0.8
+  ]
 }
