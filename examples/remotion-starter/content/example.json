@@ -1,0 +1,59 @@
+{
+  "id": "2026-07-18-codex-remotion-production-line",
+  "lane": "opinion-explainer",
+  "title": "忙不是成长",
+  "subtitle": "重复才该交给系统",
+  "durationSec": 60,
+  "platform": "xhs",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "hook": "你以为日更卡在灵感，其实卡在每天重做同一套工程。",
+  "scenes": [
+    {
+      "type": "problem",
+      "title": "真正消耗人的地方",
+      "voiceover": "很多人不是写不出内容，而是每条视频都从空白时间线开始。",
+      "caption": "日更累在重复搭工程",
+      "visual": "blank timeline becomes reusable cards",
+      "bullets": ["标题", "字幕", "封面", "导出"]
+    },
+    {
+      "type": "insight",
+      "title": "稳定结构应该被保存",
+      "voiceover": "只要栏目结构稳定，标题、安全区、字幕和导出规则就应该写进项目。",
+      "caption": "稳定的部分写进代码",
+      "visual": "rules move from chat bubble into code files",
+      "bullets": ["AGENTS.md", "theme.ts", "content JSON"]
+    },
+    {
+      "type": "method",
+      "title": "每天只换内容数据",
+      "voiceover": "新的观点、例子和素材进入 JSON，Remotion 负责把它渲染成同一套视觉语言。",
+      "caption": "每天换 JSON，不重搭模板",
+      "visual": "JSON card drives a vertical video layout",
+      "bullets": ["写脚本", "校验字段", "渲染 still", "导出 MP4"]
+    },
+    {
+      "type": "review",
+      "title": "复盘也改系统",
+      "voiceover": "如果字幕溢出，就修字幕组件；如果开场弱，就改 hook 模板，而不是只补这一条。",
+      "caption": "复盘要改生产线",
+      "visual": "review note updates reusable component",
+      "bullets": ["组件", "schema", "风格", "QA"]
+    }
+  ],
+  "ending": {
+    "summary": "把重复交给生产线，把判断留给人。",
+    "cta": "下次做视频，先别急着剪，先固定结构。"
+  },
+  "sources": [
+    {
+      "title": "Codex Remotion Daily Video Skill",
+      "url": "https://github.com/jackbauerxu/codex-remotion-daily-video",
+      "note": "production-line method and project structure"
+    }
+  ]
+}
