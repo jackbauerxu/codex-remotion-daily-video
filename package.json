@@ -1,0 +1,9 @@
+{
+  "name": "codex-remotion-daily-video-repo",
+  "version": "0.3.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "verify": "node scripts/verify-repo.mjs && node examples/remotion-starter/scripts/validate-content.mjs examples/remotion-starter/content/example.json && node examples/remotion-starter/scripts/make-hyperframes-brief.mjs --content examples/remotion-starter/content/example.json --out /tmp/codex-remotion-daily-video-brief.md"
+  }
+}
