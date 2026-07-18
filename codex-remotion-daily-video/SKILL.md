@@ -1,403 +1,53 @@
 ---
 name: codex-remotion-daily-video
-description: Use when the user wants repeatable knowledge, tutorial, book-summary, product-explainer, data-explainer, quote, podcast-clip, product-update, or course-clip videos as a Codex, HyperFrames, and Remotion production line.
+description: Build or operate repeatable Codex + HyperFrames + Remotion short-video production lines for knowledge, tutorial, book-summary, product-explainer, data-explainer, quote, podcast-clip, product-update, course-clip, social commerce explainer, or daily vertical video workflows. Use when a parent Workflow Contract routes to this child skill, when the user wants JSON-driven Remotion templates, still-frame/MP4 render checks, HyperFrames-to-Remotion promotion, reusable video scripts, style presets, prompt libraries, or a production-grade Remotion starter.
 ---
 
-# Codex + HyperFrames + Remotion Daily Video
+# Codex Remotion Daily Video
 
-## Overview
+Turn repeatable short-video work into a code-backed production line. Keep the human in charge of judgment and message; let Codex maintain the project rules, structured content, reusable Remotion components, validation scripts, and review loop.
 
-Use this skill to turn repeatable short-video production into a maintainable code project. The core idea: the human owns judgment and message; Codex maintains the production line; HyperFrames helps validate new video formats quickly; Remotion renders stable videos from React components and structured data.
+## Operating Boundary
 
-## When to Use
+Use this as a child production skill, not as the parent workflow designer.
 
-Use for:
+- `codex-workflow-builder` owns the reusable workflow decision and the Workflow Contract.
+- `codex-remotion-daily-video` owns video lanes, scripts, prompts, JSON content, Remotion templates, still-frame checks, MP4 render checks, and template improvement.
+- HyperFrames validates uncertain format ideas quickly. Remotion holds stable production templates. Do not treat HyperFrames samples as the long-term source of truth.
 
-- Daily or weekly knowledge videos with repeated structure.
-- AI tool tutorials, book-summary accounts, product explainers, data explainers, news explainers, quote cards, podcast clips, product updates, course clips.
-- Users who want to test a new content format with HyperFrames before turning it into a Remotion template.
-- Users who keep repeating video setup tasks: script, scenes, captions, cover, timing, dimensions, checks, exports.
-- Requests routed from `codex-workflow-builder` after a Workflow Contract has identified repeatable short-video production.
-- Requests like "make my video workflow repeatable", "use Codex and Remotion for daily videos", "use Codex + HyperFrames + Remotion", "turn articles into consistent short videos", "create a video production Skill".
+If the request is still vague about trigger, inputs, output folder, review points, or stop conditions, create the missing video-specific contract fields first or route back to `codex-workflow-builder`.
 
-Do not use for:
+## Load What You Need
 
-- One-off cinematic edits, heavy live footage, emotional montage, or footage-first storytelling.
-- Tasks where a manual editor is clearly faster and consistency is not important.
-- Requests that only need a single caption, title, or thumbnail.
+- For parent-child intake, engine choice, folder layout, and daily operating steps, read `references/production-line.md`.
+- For content JSON, lane fields, reusable modules, and render scripts, read `references/schema-and-rendering.md`.
+- For script templates, prompt library, style presets, shot language, and Seedance-style realistic B-roll prompts, read `references/style-prompts-and-scripts.md`.
+- Before preview/render completion claims, read `references/qa-checks.md`.
+- When starting a real project, copy or adapt `examples/remotion-starter/` instead of inventing a new project from memory.
 
-## Core Principle
+## Execution
 
-Do not start from an empty video project every day. First validate uncertain formats quickly, then maintain stable templates and feed them new data.
+1. Intake the Workflow Contract or create the missing video-specific fields.
+2. Decide the engine: HyperFrames validation, Remotion production, or both.
+3. Choose a content lane and script template.
+4. Produce or validate `content/*.json`.
+5. Confirm that the Remotion composition renders every required field.
+6. Run still-frame checks before full MP4 render.
+7. Render only after environment bootstrap and validation pass.
+8. Review the result and improve one durable production rule, component, prompt, or schema field.
 
-Use the two-engine rule:
+## Environment Rule
 
-- HyperFrames is for quick format validation: hook, pacing, layout direction, scene rhythm, and sample outputs.
-- Remotion is for stable production: reusable React components, JSON content, caption rules, render commands, and batch output.
-- Codex is the operator: it turns ideas into scripts, briefs, schemas, components, checks, and review improvements.
+For any still frame, preview, or MP4 request, bootstrap the actual project environment before claiming completion:
 
-The stable parts live in code:
+- detect the package manager from the lockfile or project convention;
+- install or update project-local dependencies only through the environment approval mechanism when downloads are needed;
+- prepare browser, compositor, and FFmpeg requirements through the project-supported diagnostic path;
+- run diagnostics, still-frame checks, and artifact checks;
+- report a JSON file, storyboard, brief, or React component as such, never as a rendered video.
 
-- visual theme
-- scene components
-- caption rules
-- cover rules
-- render commands
-- acceptance checks
+If automatic setup fails, stop before rendering and report the missing dependency, failed command, and next safe action.
 
-The daily-changing parts live in JSON:
+## Done Means
 
-- title
-- hook
-- scenes
-- captions
-- image references
-- voiceover
-- duration
-
-## Mandatory Environment Bootstrap Before Preview or Render
-
-For any request that needs a still frame, preview, or MP4, environment bootstrap is mandatory. Do not jump directly to content generation or report a completed video before this gate passes.
-
-Run this sequence in the actual video project:
-
-1. Detect the package manager from the lockfile and inspect `package.json`, the render scripts, and the installed tool versions.
-2. If Node.js, the package manager, or project dependencies are missing, initialize or install them automatically in the project using the existing lockfile whenever possible. If they are outdated, update them to the latest stable compatible versions and validate major-version changes.
-3. If the render path needs a browser, compositor, or FFmpeg runtime, install or prepare the missing runtime using the project's supported setup/diagnostic command.
-4. If the format is being validated with HyperFrames, verify the HyperFrames CLI/runtime, browser runtime, FFmpeg, and asset access before previewing.
-5. Run a preflight/diagnostic check after installation. Continue to the still frame and full render only when the check passes.
-6. Network downloads and system-level installs must use the environment's approval mechanism. Never use `sudo`, silently modify unrelated global tools, or claim that an install succeeded without verification.
-7. Cache and reuse a valid project environment on later daily runs; reinstall only when the lockfile or runtime requirement changes.
-
-If automatic setup fails, stop before rendering and report the missing dependency, failed command, and whether the user needs to approve an install or provide a local tool. A JSON file, storyboard, or React composition is not an MP4 and must not be reported as one.
-
-## Fit Check
-
-Before proposing a full Remotion setup, decide whether the content is template-friendly and whether it needs a HyperFrames validation pass first.
-
-Good fit:
-
-- The topic changes, but the structure stays similar.
-- The user wants consistency across many videos.
-- Text, captions, screenshots, cards, UI, charts, or simple motion carry the video.
-- The user can benefit from batch rendering or multiple platform formats.
-
-Use HyperFrames first when:
-
-- The user is exploring a new account direction, visual style, or content series.
-- The content is template-friendly, but the winning hook, pacing, and layout are not known yet.
-- The user wants a quick sample for book-summary, product-explainer, or data-explainer videos.
-
-Use Remotion directly when:
-
-- The series format is already proven.
-- The user needs repeatable output, JSON-driven videos, or multiple videos per day.
-- The user wants stable captions, covers, components, and render checks.
-
-Weak fit:
-
-- Each video depends on unique camera footage, timing, music, or emotional editing.
-- The user needs one quick clip and will not repeat the workflow.
-- The content cannot be represented as structured scenes.
-
-## Required Output Shape
-
-When using this skill, output these sections:
-
-1. **Workflow contract intake**: use existing contract or create the missing video-specific fields.
-2. **Fit verdict**: whether Codex + Remotion is worth it.
-3. **Engine choice**: HyperFrames validation, Remotion production, or both.
-4. **Video rule file**: proposed `AGENTS.md` rules.
-5. **Minimum project structure**.
-6. **Content JSON schema**.
-7. **Reusable modules**.
-8. **Daily workflow**.
-9. **Render and layout checks**.
-10. **Review loop**.
-11. **First templates to build**.
-
-## Workflow
-
-### 1. Intake the Parent Workflow Contract
-
-If the request came from `codex-workflow-builder`, read the Workflow Contract first and preserve its boundaries:
-
-```markdown
-## Workflow Contract
-- Goal:
-- Trigger:
-- Inputs:
-- Outputs:
-- Project folder:
-- Steps:
-- Human review points:
-- Quality checks:
-- Stop conditions:
-- Child skill: codex-remotion-daily-video
-```
-
-Map it into video-specific decisions:
-
-| Contract field | Video decision |
-|---|---|
-| Goal | account lane, platform, cadence, expected output |
-| Trigger | new article, book note, product update, data point, tutorial outline |
-| Inputs | source text, assets, brand rules, voiceover, dimensions |
-| Outputs | HyperFrames brief, content JSON, still frame, MP4, review notes |
-| Human review points | hook, sample variant, still frame, final render, template improvement |
-| Quality checks | title length, subtitle safe area, asset paths, duration, render output |
-| Stop conditions | missing source, unclear rights, missing required data, unapproved claims |
-
-If no Workflow Contract exists and the user is asking for a broad reusable process, create a compact contract or suggest using `codex-workflow-builder` first. Do not jump directly into Remotion components until the trigger, inputs, outputs, and review points are clear.
-
-### 2. Define the Video Rules
-
-Create or update `AGENTS.md` in the video project. Include:
-
-```markdown
-# AGENTS.md
-
-## Video account rules
-
-- Default format: 1080x1920 vertical video, 30fps.
-- Target duration: 45-75 seconds.
-- Captions stay inside safe zones and never cover the main visual.
-- Title has at most 2 lines; each line has at most 14 Chinese characters.
-- Animation is clean and readable; avoid noisy transitions.
-- After template changes, render a still frame before full video render.
-- Final MP4 exports go to outputs/.
-- New formats get a HyperFrames brief before becoming Remotion templates.
-```
-
-Add account-specific style rules: brand colors, fonts, caption style, cover style, ending style, content lane, and visual patterns to avoid.
-
-### 3. Build the Minimum Production Line
-
-Start small:
-
-```text
-daily-video/
-  AGENTS.md
-  package.json
-  src/
-    Root.tsx
-    compositions/
-      DailyExplainer.tsx
-      ToolTutorial.tsx
-      QuoteCard.tsx
-    components/
-      TitleCard.tsx
-      Caption.tsx
-      ProgressBar.tsx
-      SceneCard.tsx
-      BrandMark.tsx
-    styles/
-      theme.ts
-  content/
-    2026-07-01-topic.json
-  public/
-    assets/
-  scripts/
-    render-daily.mjs
-    make-content-from-md.mjs
-    make-hyperframes-brief.mjs
-  outputs/
-```
-
-Keep daily variation in `content/*.json`; avoid changing the composition for every video.
-
-### 4. Decide the Content Lane
-
-Classify the video before designing templates:
-
-| Lane | Structure | Build first |
-|---|---|---|
-| Book summary | quote, problem, method, example, action | hook, book card, takeaway card |
-| Product explainer | scenario, pain, feature, proof, result | scene card, comparison, ending |
-| Data explainer | phenomenon, number, context, misconception, conclusion | chart card, source note, simple explanation |
-| Tool tutorial | problem, tool, steps, demo, result | step card, demo frame, result card |
-| Opinion explainer | tension, insight, method, example, ending | hook card, contrast card, takeaway |
-
-For a new lane, create 1-3 HyperFrames briefs before creating a Remotion composition.
-
-### 5. Use Structured Content
-
-Start with a small schema:
-
-```json
-{
-  "title": "用 Codex + Remotion 做到视频日更",
-  "durationSec": 60,
-  "hook": "日更最痛的不是写脚本，而是每天从零剪一遍。",
-  "scenes": [
-    {
-      "type": "problem",
-      "title": "日更为什么累",
-      "voiceover": "如果你每天都打开一个空白剪辑工程，日更一定会越来越累。",
-      "caption": "每天从零剪，才是最累的",
-      "visual": "empty timeline becoming a reusable template"
-    },
-    {
-      "type": "workflow",
-      "title": "真正的解法",
-      "bullets": ["Codex 写模板", "Remotion 渲染视频", "每天只换 JSON"]
-    }
-  ]
-}
-```
-
-For book-summary, product-explainer, and data-explainer videos, extend only the fields that change the lane:
-
-```json
-{
-  "lane": "book-summary",
-  "sourceTitle": "The Almanack of Naval Ravikant",
-  "claim": "真正的杠杆不是更努力，而是让系统替你重复。",
-  "evidence": ["作者观点", "现实案例", "可执行动作"],
-  "cta": "收藏这条，下一次做内容前先看一遍。"
-}
-```
-
-### 6. Split the Video into Five Modules
-
-Build these first:
-
-| Module | Job | Must be reusable |
-|---|---|---|
-| Hook | First 3 seconds, make viewer care | title, highlight word, quick motion |
-| Scene | Main ideas, steps, examples | cards, comparisons, UI, charts |
-| Caption | Readable subtitle layer | font size, safe area, emphasis color |
-| Asset | Screenshots, logo, avatar, B-roll | local assets, stable references |
-| Ending | Summary and light CTA | reusable closing card |
-
-### 7. HyperFrames Validation Loop
-
-Use this when the format is not stable yet:
-
-1. Turn the raw idea into a HyperFrames brief: hook, scene list, visual direction, captions, duration, and ending.
-2. Produce 1-3 sample variants with different hooks or scene rhythms.
-3. Choose one format based on clarity, pacing, repeatability, and platform fit.
-4. Convert the winning format into a Remotion composition only after the structure is reusable.
-
-HyperFrames output should be treated as a prototype, not the long-term source of truth.
-
-### 8. Daily Loop
-
-Use this repeatable loop:
-
-1. User writes raw idea: topic, audience, core point, style.
-2. If the lane is unproven, Codex creates a HyperFrames brief and sample variants.
-3. If the lane is proven, Codex turns it into a 45-75 second script and `content/YYYY-MM-DD-topic.json`.
-4. Codex checks whether the Remotion composition supports all fields.
-5. Render one key still frame and inspect layout.
-6. Render the full MP4.
-7. Review performance and improve one template rule.
-
-### 9. Render Checks
-
-Before full render, check:
-
-- title length
-- caption overflow
-- safe-zone collisions
-- logo position
-- color contrast
-- scene timing
-- cover readability
-- output format and duration
-
-If something fails, adjust components or schema rules before rendering the full video. Prefer fixing the system over patching one video.
-
-### 10. First Templates
-
-Start with:
-
-1. **Opinion explainer**: hook, problem, insight, method, example, ending.
-2. **Tool tutorial**: problem, tool, steps, demo, result, ending.
-3. **Quote card**: quote, context, interpretation, action, ending.
-4. **Book summary**: book/title card, quote, practical problem, method, example, action.
-5. **Product explainer**: pain, scene, feature, proof, result, light ending.
-6. **Data explainer**: phenomenon, key number, chart, misconception, explanation, conclusion.
-
-## Prompt Patterns
-
-Use a parent Workflow Contract:
-
-```text
-Use this Workflow Contract as the parent boundary.
-Now design the codex-remotion-daily-video child workflow:
-1. Choose engine: HyperFrames validation, Remotion production, or both.
-2. Choose content lane.
-3. Define content JSON.
-4. Define reusable modules.
-5. Define still-frame and render checks.
-```
-
-Create HyperFrames briefs:
-
-```text
-I want to test a new short-video lane before building a Remotion template.
-Create 3 HyperFrames briefs.
-Each brief needs: hook, scene list, visual direction, captions, duration, and why it is repeatable.
-Then recommend which one should become a Remotion composition.
-```
-
-Turn raw idea into JSON:
-
-```text
-Turn this idea into a 60-second vertical video script.
-Requirements:
-1. First 3 seconds must contain a clear tension.
-2. Use 4 scenes.
-3. Each scene needs title, voiceover, caption, and visual.
-4. Output as content/YYYY-MM-DD-topic.json.
-5. Do not change Remotion components unless the schema is insufficient.
-```
-
-Turn a book-summary idea into JSON:
-
-```text
-Turn this book-summary idea into a 60-second vertical video.
-Use lane=book-summary.
-Include sourceTitle, claim, evidence, scenes, captions, visual direction, and ending.
-If the format is not stable, produce a HyperFrames brief first.
-```
-
-Check template support:
-
-```text
-Read content/YYYY-MM-DD-topic.json and src/compositions/DailyExplainer.tsx.
-Check whether every field is rendered.
-If captions may overflow, adjust the Caption component, not the script.
-```
-
-Review after publishing:
-
-```text
-Based on this video's data, identify one production-line improvement.
-Choose only one: hook template, caption rule, cover composition, scene timing, or ending card.
-Update the relevant rule or component.
-```
-
-## Common Mistakes
-
-- Rebuilding the timeline every day instead of feeding new JSON.
-- Turning every new idea into a Remotion template before the format has been validated.
-- Treating HyperFrames prototypes as the long-term production system instead of promoting winning formats into stable templates.
-- Letting captions live inside each scene instead of one caption component.
-- Changing components for one video instead of improving schema and reusable modules.
-- Skipping still-frame layout checks before full render.
-- Repeating style preferences in chat instead of writing them into `AGENTS.md`, `theme.ts`, schema, and components.
-- Building too many templates before the first daily template is stable.
-
-## Definition of Done
-
-A video production line is ready when:
-
-- A new idea can become structured JSON.
-- Unproven lanes can be tested with a HyperFrames brief before template work.
-- One Remotion composition can render multiple videos.
-- Captions and titles stay inside safe zones.
-- A still frame can catch layout issues before full render.
-- The same command exports MP4 to `outputs/`.
-- Reviews improve the system, not only the current video.
+A production line is ready only when a new idea can become structured JSON, the selected composition can render it, captions and titles stay in safe zones, a still frame catches layout problems before full render, an MP4 export path exists, and review improves the system rather than patching one video.
