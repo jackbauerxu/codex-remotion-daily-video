@@ -1,18 +1,45 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500" role="img" aria-labelledby="title desc">
-  <title id="title">Codex Remotion Daily Video</title>
-  <desc id="desc">A warm orange video timeline turns structured content JSON into a validated daily video.</desc>
-  <rect width="1200" height="500" rx="28" fill="#151515"/>
-  <rect x="56" y="58" width="1088" height="330" rx="18" fill="#1f1f1f" stroke="#3b3b3b"/>
-  <g stroke="#4a4a4a" opacity=".7"><path d="M78 110h1044M78 160h1044M78 210h1044M78 260h1044M78 310h1044"/><path d="M148 82v282M218 82v282M288 82v282M358 82v282M428 82v282M498 82v282M568 82v282M638 82v282M708 82v282M778 82v282M848 82v282M918 82v282M988 82v282M1058 82v282"/></g>
-  <text x="76" y="95" font-family="ui-sans-serif,system-ui,sans-serif" font-size="13" fill="#ffbd76" letter-spacing="4">CONTENT JSON / REMOTION / DAILY LOOP</text>
-  <text x="76" y="151" font-family="ui-sans-serif,system-ui,sans-serif" font-size="51" font-weight="700" fill="#fff6e8" letter-spacing="-2">Daily Video</text>
-  <text x="78" y="182" font-family="ui-sans-serif,system-ui,sans-serif" font-size="15" fill="#c8c1b5">A reusable production line for topics that come back tomorrow.</text>
-  <g transform="translate(78 230)" font-family="ui-sans-serif,system-ui,sans-serif">
-    <rect width="230" height="84" rx="12" fill="#2c2520" stroke="#7d5438"/><text x="20" y="31" font-size="12" letter-spacing="2" fill="#ffbd76">INPUT</text><text x="20" y="60" font-size="20" fill="#fff6e8">content.json</text>
-    <rect x="258" width="230" height="84" rx="12" fill="#332421" stroke="#93483d"/><text x="278" y="31" font-size="12" letter-spacing="2" fill="#ff927c">COMPOSE</text><text x="278" y="60" font-size="20" fill="#fff6e8">scenes + captions</text>
-    <rect x="516" width="230" height="84" rx="12" fill="#2a2d22" stroke="#6b784a"/><text x="536" y="31" font-size="12" letter-spacing="2" fill="#b6d17b">CHECK</text><text x="536" y="60" font-size="20" fill="#fff6e8">still frame</text>
-    <rect x="774" width="230" height="84" rx="12" fill="#d47743"/><text x="794" y="31" font-size="12" letter-spacing="2" fill="#fff1df">OUTPUT</text><text x="794" y="60" font-size="20" fill="#fffaf2">MP4 / review</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="320" viewBox="0 0 1200 320" role="img" aria-labelledby="title desc">
+  <title id="title">daily video — A SMALL FORMAT / A STABLE LINE</title>
+  <desc id="desc">A Remotion production line for briefs, content JSON, stills and verified MP4s.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#181b23"/><stop offset="1" stop-color="#5a2e25"/></linearGradient>
+    <linearGradient id="glow" x1="0" x2="1"><stop stop-color="#ff7d52" stop-opacity=".32"/><stop offset="1" stop-color="#b8e8d5" stop-opacity=".04"/></linearGradient>
+    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0V28" fill="none" stroke="#fff" stroke-opacity=".07"/></pattern>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="180%"><feDropShadow dx="0" dy="12" stdDeviation="14" flood-color="#000" flood-opacity=".34"/></filter>
+  </defs>
+  <rect width="1200" height="320" rx="28" fill="url(#bg)"/>
+  <rect width="1200" height="320" rx="28" fill="url(#grid)"/>
+  <path d="M0 250C210 195 362 324 590 246S930 154 1200 224V320H0Z" fill="url(#glow)" opacity=".55"/>
+  <g transform="translate(62 54)">
+    <text x="0" y="0" fill="#ff7d52" font-family="Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="2">01 · VIDEO PRODUCTION</text>
+    <rect x="0" y="18" width="86" height="4" rx="2" fill="#ff7d52"/>
+    <text x="0" y="82" fill="#fff" font-family="Georgia, 'Times New Roman', serif" font-size="55" font-weight="700">daily</text>
+    <text x="0" y="136" fill="#fff" font-family="Georgia, 'Times New Roman', serif" font-size="48" font-weight="700">VIDEO / REMOTION</text>
+    <text x="0" y="177" fill="#fff" fill-opacity=".72" font-family="Arial, sans-serif" font-size="16">brief • compose • still • render • learn</text>
+    <g transform="translate(0 205)">
+      <rect width="128" height="28" rx="14" fill="#fff" fill-opacity=".1" stroke="#fff" stroke-opacity=".18"/>
+      <text x="16" y="19" fill="#fff" font-family="Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="1">JSON DRIVEN</text>
+      <rect x="140" width="118" height="28" rx="14" fill="#fff" fill-opacity=".1" stroke="#fff" stroke-opacity=".18"/>
+      <text x="156" y="19" fill="#fff" font-family="Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="1">QA GATED</text>
+    </g>
   </g>
-  <g fill="none" stroke="#ffbd76" stroke-width="2"><path d="M308 272h28M566 272h28M824 272h28"/><path d="m326 265 12 7-12 7M584 265l12 7-12 7M842 265l12 7-12 7"/></g>
-  <text x="78" y="422" font-family="ui-monospace,monospace" font-size="14" fill="#c8c1b5">HyperFrames first when the format is unproven · Remotion once it repeats</text>
+  <g filter="url(#shadow)">
+    <g transform="translate(720 44) rotate(-7)">
+      <rect width="280" height="178" rx="18" fill="#282b36" stroke="#fff" stroke-opacity=".24"/>
+      <rect width="280" height="32" rx="18" fill="#fff" fill-opacity=".12"/>
+      <circle cx="22" cy="16" r="5" fill="#ff7d52"/><circle cx="40" cy="16" r="5" fill="#b8e8d5"/><circle cx="58" cy="16" r="5" fill="#fff" fill-opacity=".55"/>
+      <text x="22" y="62" fill="#fff" font-family="Arial, sans-serif" font-size="12" font-weight="700">CONTENT / 2026-08-02</text>
+      <path d="M22 82H250M22 102H204M22 122H231M22 142H166" stroke="#fff" stroke-opacity=".25" stroke-width="6" stroke-linecap="round"/>
+      <rect x="198" y="52" width="54" height="24" rx="12" fill="#ff7d52" fill-opacity=".88"/><text x="211" y="68" fill="#181b23" font-family="Arial, sans-serif" font-size="10" font-weight="700">STILL</text>
+    </g>
+    <g transform="translate(904 112) rotate(8)">
+      <rect width="230" height="148" rx="16" fill="#ffd0a8" stroke="#fff" stroke-opacity=".2"/>
+      <text x="20" y="31" fill="#181b23" font-family="Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="1">COMPOSITION</text>
+      <path d="M22 62L62 45L98 72L137 38L184 60" fill="none" stroke="#181b23" stroke-opacity=".7" stroke-width="3"/>
+      <circle cx="62" cy="45" r="6" fill="#ff7d52"/><circle cx="137" cy="38" r="6" fill="#b8e8d5"/>
+      <rect x="20" y="96" width="164" height="12" rx="6" fill="#181b23" fill-opacity=".16"/>
+      <rect x="20" y="118" width="112" height="12" rx="6" fill="#181b23" fill-opacity=".12"/>
+    </g>
+  </g>
+  <text x="1138" y="294" fill="#fff" fill-opacity=".46" text-anchor="end" font-family="Arial, sans-serif" font-size="10" letter-spacing="2">HYPERFRAMES → REMOTION</text>
 </svg>

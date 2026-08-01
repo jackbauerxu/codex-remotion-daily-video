@@ -6,9 +6,13 @@
 
 这个仓库是一个 Codex / ChatGPT Skill，也包含可改造的 Remotion starter。它不是父级工作流设计器；它是视频生产线的子级落地层。
 
+![01 · FIRST IMPRESSION：Daily Video 的 Remotion 生产线](assets/readme/section-why.svg)
+
 ## 30 秒看懂
 
-![日更视频生产循环：brief、compose、still、render、learn](assets/readme/render-loop.svg)
+![日更视频生产循环：brief、compose、still、render、learn](assets/readme/workflow.svg)
+
+![Daily Video 项目对象展示：内容 JSON、Composition 和输出 QA](assets/readme/showcase.svg)
 
 | 你已有的东西 | 本 Skill 接手什么 | 交付状态 |
 | --- | --- | --- |
@@ -18,6 +22,8 @@
 | 需要 AI B-roll | Seedance 风格的身份、设备和连续性提示 | 未渲染时明确 `not_rendered` |
 
 它只负责视频专项落地，不吞掉父级的流程判断，也不把未渲染的 JSON、组件或 brief 写成成片。
+
+![03 · USE THE SYSTEM：先证明 still，再交付 MP4](assets/readme/section-use.svg)
 
 ## 它融合了什么
 
