@@ -1,8 +1,23 @@
 # Codex Remotion Daily Video
 
+![Codex Remotion Daily Video：从 content JSON 到可验证 MP4](assets/readme/hero.svg)
+
 把短视频日更从“每天重新剪一条”变成“维护一条可复用的视频生产线”。
 
 这个仓库是一个 Codex / ChatGPT Skill，也包含可改造的 Remotion starter。它不是父级工作流设计器；它是视频生产线的子级落地层。
+
+## 30 秒看懂
+
+![日更视频生产循环：brief、compose、still、render、learn](assets/readme/render-loop.svg)
+
+| 你已有的东西 | 本 Skill 接手什么 | 交付状态 |
+| --- | --- | --- |
+| 父级 `Workflow Contract` | lane、脚本、镜头、JSON 和组件 | `brief` / `content.json` |
+| 未验证的新栏目 | HyperFrames 样片路线 | 先预览、再决定是否模板化 |
+| 已验证的栏目结构 | Remotion composition 和渲染脚本 | still / MP4 / QA |
+| 需要 AI B-roll | Seedance 风格的身份、设备和连续性提示 | 未渲染时明确 `not_rendered` |
+
+它只负责视频专项落地，不吞掉父级的流程判断，也不把未渲染的 JSON、组件或 brief 写成成片。
 
 ## 它融合了什么
 
